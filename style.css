@@ -6,7 +6,7 @@ body{
     gap: 10px;
 }
 
-section{
+.area_tarefas{
     display: flex;
     flex-direction: column;
     margin: 10px;
@@ -21,10 +21,20 @@ header h1{
     flex-direction: row;
 }
 
-input{
-    width: 300px;
+#input{
+    width: 500px;
     height: 70px;
     font-size: 24px;
+    text-indent: 10px;
+}
+
+#input.tarefa_invalida{
+    width: 500px;
+    height: 70px;
+    font-size: 24px;
+    text-indent: 10px;
+    border-radius: 2px;
+    border-color: red;
 }
 
 .adicionar{
@@ -45,17 +55,17 @@ input{
     justify-content: space-between;
     padding: 10px;
     gap: 30px;
-    width: 400px;
+    width: 600px;
     height: 50px;
     border: 2px;
     border-color: antiquewhite;
     border-radius: 2px;
     background-color: white;
     margin: 5px;
-    
+    cursor: pointer;
 }
 
-.delete{
+.del{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -64,6 +74,7 @@ input{
     background-color: red;
     border-radius: 3px;
     height: 50px;
+    cursor: pointer;
 }
 
 
@@ -71,10 +82,12 @@ input{
 span{
     font-size: 24px;
     margin: 5px;
+    cursor: pointer;
 }
 
 .check{
     color: green;
+    
 }
 
 p{
@@ -84,6 +97,11 @@ p{
 
 .titulo_tarefa_clicada {
     text-decoration: line-through;
+}
+
+#tarefa_clicada.desloca{
+    background-color: rgba(190, 186, 186, 0.461);
+    margin-right: 500px !important;
 }
 
 

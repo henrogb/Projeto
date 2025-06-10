@@ -19,14 +19,14 @@
     <header>
         <h1>Lista de Tarefas</h1>
         <div id="barra_pesquisa">
-            <input id="input" type="text" placeholder="Escreva sua tarefa aqui">
-            <button type="" class="adicionar">Adicionar</button>
+            <input id="input" type="text" class="texto_input" placeholder="Escreva sua tarefa aqui">
+            <button onclick="add_elemento()" id="add" class="adicionar">Adicionar</button>
         </div>
     </header>
 
 
-    <main>
-        <section>
+    <main id="area">
+        <div class="area_tarefas">
             <div id="tarefa" class="boxes">
                 <div class="circle">
                     <span class="mdi mdi-circle-outline"></span>
@@ -37,7 +37,7 @@
                 </div>
 
                 <div>
-                    <button id="delete_function" class="delete">
+                    <button id="delete_function" onclick="deletar_tarefa()" class="del">
                         <span class="mdi mdi-trash-can-outline"></span>Deletar
                     </button>
                 </div>
@@ -53,17 +53,19 @@
                 </div>
 
                 <div>
-                    <button id="delete_function" class="delete">
+                    <button id="delete_function" onclick="deletar_tarefa()" class="del">
                         <span class="mdi mdi-trash-can-outline"></span>Deletar
                     </button>
                 </div>
             </div>
-        </section>
+        </div>
 
     </main>
 
 
     <footer></footer>
+
+    <script src="index.js"></script>
 </body>
 
 </html>
