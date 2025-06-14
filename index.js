@@ -3,6 +3,7 @@ let contador = 0;
 let input = document.getElementById('input');
 let adicionar = document.getElementById('add');
 let main = document.getElementById('area')
+let tarefa = input.value;
 
 function add_elemento() {
     let tarefa = input.value;
@@ -15,14 +16,14 @@ function add_elemento() {
 
     else {
         ++contador;
-        let novo_item = `<div class="area_tarefas">
-            <div id="${contador}" class="boxes">
-                <div class="circle">
-                    <span class="mdi mdi-circle-outline"></span>
+        let novo_item = `<div id="${contador}" class="area_tarefas">
+            <div id="tarefa_${contador}" class="boxes" onclick="tarefa_concluida(${contador})">
+                <div class="circle" id="cor_${contador}">
+                    <span id="icone_${contador}" class="mdi mdi-circle-outline"></span>
                 </div>
 
-                <div class="titulo_tarefa">
-                    <p>teste de tarefa</p>
+                <div class="titulo_tarefa" id="titulo_${contador}">
+                    <p>${tarefa}</p>
                 </div>
 
                 <div>
@@ -52,14 +53,46 @@ input.addEventListener("keyup", function (event) {
 
 //logica para tarefa concluida
 
-function tarefa_concluida() {
+function tarefa_concluida(id){
+    var tarefa = document.getElementById("tarefa_"+id);
+    //impede a verificação se a terefa ja tiver sido excluida
+    if (!tarefa) return;
+    var classe = tarefa.getAttribute("class");
+    console.log(classe);
+    var icone = document.getElementById("icone_"+id);
+    var conteudo = document.getElementById("titulo_"+id);
+    var cor = document.getElementById("cor_"+id);
+    var area = document.getElementById("area");
+    var div = document.getElementById(id);
 
+    if (classe == "boxes"){
+        tarefa.classList.add("clicada");
+               
+        icone.classList.replace("mdi-circle-outline", "mdi-check-circle");
+        //replace literalmente faz o replace da segunda pela primeiro ou seja a primeira classe e substituida pela segunda
+        cor.classList.replace("circle", "check");
+        conteudo.classList.add("titulo_tarefa_clicada");
+        tarefa.classList.replace("boxes", "tarefa_clicada");
 
+        area.appendChild(div);
+    }else {
+        tarefa.classList.remove("clicada");
+    
+        icone.classList.replace("mdi-check-circle", "mdi-circle-outline");
+        cor.classList.replace("check", "circle");
+        conteudo.classList.remove("titulo_tarefa_clicada");
+        tarefa.classList.replace("tarefa_clicada", "boxes");
+    }
 }
 
 //logica para deletar
 
 function deletar_tarefa(id) {
-    var tarefa = document.getElementById(id);
-    tarefa.remove();
+    var tarefa = document.getElementById("tarefa_"+id);
+    var div_tarefa = document.getElementById(id);
+    if (tarefa) {
+        tarefa.remove();
+        div_tarefa.remove();
+    }
+    
 }
